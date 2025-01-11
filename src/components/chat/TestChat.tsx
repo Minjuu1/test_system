@@ -14,9 +14,9 @@ export function TestChat({ systemPrompt, messages, setMessages }: TestChatProps)
   const [testMessage, setTestMessage] = useState('');
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4">
-      <h2 className="text-xl font-bold mb-3">Test Chat</h2>
-      <div className="h-[calc(100vh-12rem)] overflow-y-auto mb-4 space-y-3">
+    <div className="bg-white rounded-lg shadow-lg p-6 h-full flex flex-col">
+      <h2 className="text-xl font-bold mb-2">Test Chat</h2>
+      <div className="flex-grow overflow-y-auto mb-4 space-y-3">
         {messages.map((message, index) => (
           <ChatMessage 
             key={index} 

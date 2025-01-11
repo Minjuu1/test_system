@@ -9,7 +9,7 @@ export function HelperChat() {
   const [helperChat, setHelperChat] = useState<Message[]>([]);
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4">
+    <div className="bg-white rounded-lg shadow-lg p-6 h-full flex flex-col">
       <h2 className="text-xl font-bold mb-3">Prompt Helper</h2>
       <div className="h-64 overflow-y-auto mb-4 space-y-3">
         {helperChat.map((message, index) => (

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Message } from '@/types/chat';
-import { SystemPromptEditor } from '@/components/SYSTEM_PROMPT';
+import { SystemPromptEditor } from '@/components/systemPromptEditor';
 import { HelperChat } from '@/components/chat/HelperChat';
 import { TestChat } from '@/components/chat/TestChat';
 import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
@@ -24,26 +24,34 @@ export default function Home() {
   };
 
   return (
-    <main className="container mx-auto p-4">
-      <div className="grid grid-cols-2 gap-6">
+    <main className="container mx-auto p-4 h-screen">
+      <div className="grid grid-cols-2 gap-6 h-[calc(100vh-2rem)]">
         {/* Left Column */}
-        <div className="space-y-6">
-          <SystemPromptEditor
-            systemPrompt={systemPrompt}
-            initialMessage={initialMessage}
-            onSystemPromptChange={setSystemPrompt}
-            onInitialMessageChange={setInitialMessage}
-            onApply={handleApplyChanges}
-          />
-          <HelperChat />
+        <div className="flex flex-col space-y-6 h-full">
+          {/* SystemPromptEditor*/}
+          <div className="h-2/3">
+            <SystemPromptEditor
+              systemPrompt={systemPrompt}
+              initialMessage={initialMessage}
+              onSystemPromptChange={setSystemPrompt}
+              onInitialMessageChange={setInitialMessage}
+              onApply={handleApplyChanges}
+            />
+          </div>
+
+          <div className="h-1/3">
+            <HelperChat />
+          </div>
         </div>
 
         {/* Right Column */}
-        <TestChat
-          systemPrompt={systemPrompt}
-          messages={testChat}
-          setMessages={setTestChat}
-        />
+        <div className="h-full">
+          <TestChat
+            systemPrompt={systemPrompt}
+            messages={testChat}
+            setMessages={setTestChat}
+          />
+        </div>
       </div>
     </main>
   );
