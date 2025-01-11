@@ -7,12 +7,20 @@ import { HelperChat } from '@/components/chat/HelperChat';
 import { TestChat } from '@/components/chat/TestChat';
 import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
 
+const DEFAULT_INITIAL_MESSAGE = "Hello! How can I assist you today?";
+
 export default function Home() {
   const [systemPrompt, setSystemPrompt] = useState(DEFAULT_SYSTEM_PROMPT);
-  const [testChat, setTestChat] = useState<Message[]>([]);
+  const [initialMessage, setInitialMessage] = useState(DEFAULT_INITIAL_MESSAGE);
+  const [testChat, setTestChat] = useState<Message[]>([
+    { role: 'assistant', content: DEFAULT_INITIAL_MESSAGE }
+  ]);
 
-  const handleApplyPrompt = () => {
-    setTestChat([]);
+  const handleApplyChanges = () => {
+    // Reset chat with new initial message
+    setTestChat([
+      { role: 'assistant', content: initialMessage }
+    ]);
   };
 
   return (
@@ -21,9 +29,11 @@ export default function Home() {
         {/* Left Column */}
         <div className="space-y-6">
           <SystemPromptEditor
-            value={systemPrompt}
-            onChange={setSystemPrompt}
-            onApply={handleApplyPrompt}
+            systemPrompt={systemPrompt}
+            initialMessage={initialMessage}
+            onSystemPromptChange={setSystemPrompt}
+            onInitialMessageChange={setInitialMessage}
+            onApply={handleApplyChanges}
           />
           <HelperChat />
         </div>
