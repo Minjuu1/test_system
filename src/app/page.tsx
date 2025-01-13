@@ -9,7 +9,7 @@ import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
 import { DEFAULT_INTERACTION_PROMPT } from '@/lib/utils';
 
 
-const DEFAULT_INITIAL_MESSAGE = "Hello! How can I assist you today?";
+const DEFAULT_INITIAL_MESSAGE = "안녕! 우리 같이 대화해보자!";
 
 export default function Home() {
   const [systemPrompt, setSystemPrompt] = useState(DEFAULT_SYSTEM_PROMPT);
@@ -52,7 +52,6 @@ export default function Home() {
             messages={testChat}
             setMessages={setTestChat}
           />
-          console.log(systemPrompt);
         </div>
       </div>
     </main>
