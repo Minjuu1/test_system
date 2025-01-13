@@ -22,7 +22,7 @@ export function SystemPromptEditor({
             value={systemPrompt}
             onChange={(e) => onSystemPromptChange(e.target.value)}
             className="w-full h-[calc(100%-2rem)] p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter system prompt..."
+            placeholder="챗봇의 역할과 성격, 유의사항에 대해 입력해주세요."
           />
         </div>
         
@@ -33,7 +33,7 @@ export function SystemPromptEditor({
             value={initialMessage}
             onChange={(e) => onInitialMessageChange(e.target.value)}
             className="w-full h-[calc(100%-2rem)] p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter the initial greeting message from AI..."
+            placeholder="챗봇의 시작 메시지를 입력해주세요."
           />
         </div>
         

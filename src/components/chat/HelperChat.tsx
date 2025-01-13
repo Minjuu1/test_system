@@ -30,7 +30,7 @@ export function HelperChat() {
           setHelperChat,
           setHelperMessage
         )}
-        placeholder="Ask for help with your prompt..."
+        placeholder="프롬프트 작성이 어렵다면 물어보세요!"
       />
     </div>
   );
