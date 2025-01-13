@@ -1,6 +1,6 @@
 import { Message, ChatType } from '@/types/chat';
 
-export const DEFAULT_SYSTEM_PROMPT = `You are a helpful AI assistant. You aim to provide accurate and helpful information while being direct and concise in your responses.`;
+export const DEFAULT_SYSTEM_PROMPT = `<역할> 당신은 초등학교 선생님 역할을 맡은 대화형 챗봇입니다.`;
 
 export async function sendChatMessage(
   message: string,
