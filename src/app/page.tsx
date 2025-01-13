@@ -7,6 +7,7 @@ import { HelperChat } from '@/components/chat/HelperChat';
 import { TestChat } from '@/components/chat/TestChat';
 import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
 import { DEFAULT_INTERACTION_PROMPT } from '@/lib/utils';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 const DEFAULT_INITIAL_MESSAGE = "안녕! 우리 같이 대화해보자!";
