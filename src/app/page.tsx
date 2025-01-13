@@ -6,6 +6,8 @@ import { SystemPromptEditor } from '@/components/systemPromptEditor';
 import { HelperChat } from '@/components/chat/HelperChat';
 import { TestChat } from '@/components/chat/TestChat';
 import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
+import { DEFAULT_INTERACTION_PROMPT } from '@/lib/utils';
+
 
 const DEFAULT_INITIAL_MESSAGE = "Hello! How can I assist you today?";
 
@@ -43,14 +45,14 @@ export default function Home() {
             <HelperChat />
           </div>
         </div>
-
         {/* Right Column */}
         <div className="h-full">
           <TestChat
-            systemPrompt={systemPrompt}
+            systemPrompt={systemPrompt + DEFAULT_INTERACTION_PROMPT}
             messages={testChat}
             setMessages={setTestChat}
           />
+          console.log(systemPrompt);
         </div>
       </div>
     </main>

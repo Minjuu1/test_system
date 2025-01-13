@@ -36,7 +36,7 @@ export function TestChat({ systemPrompt, messages, setMessages }: TestChatProps)
           setTestMessage,
           systemPrompt
         )}
-        placeholder="Test the chatbot..."
+        placeholder="만든 챗봇을 테스트해보세요."
       />
     </div>
   );
