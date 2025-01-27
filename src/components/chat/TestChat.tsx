@@ -8,9 +8,10 @@ interface TestChatProps {
   systemPrompt: string;
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  onSelectMessage: (message: Message) => void;
 }
 
-export function TestChat({ systemPrompt, messages, setMessages }: TestChatProps) {
+export function TestChat({ systemPrompt, messages, setMessages, onSelectMessage }: TestChatProps) {
   const [testMessage, setTestMessage] = useState('');
 
   return (
@@ -18,11 +19,17 @@ export function TestChat({ systemPrompt, messages, setMessages }: TestChatProps)
       <h2 className="text-xl font-bold mb-2">Test Chat</h2>
       <div className="flex-grow overflow-y-auto mb-4 space-y-3">
         {messages.map((message, index) => (
+          <div key={index} className="flex items-center">
+          <input 
+            type="checkbox" 
+            className="mr-2" 
+            onChange={() => onSelectMessage(message)} 
+          />
           <ChatMessage 
-            key={index} 
             message={message} 
             type="test" 
           />
+        </div>
         ))}
       </div>
       <ChatInput

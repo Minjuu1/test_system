@@ -8,6 +8,8 @@ import { TestChat } from '@/components/chat/TestChat';
 import { DEFAULT_SYSTEM_PROMPT } from '@/lib/utils';
 import { DEFAULT_INTERACTION_PROMPT } from '@/lib/utils';
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ChatReview } from '@/components/chat/ChatReview';
+
 
 
 const DEFAULT_INITIAL_MESSAGE = "안녕! 우리 같이 대화해보자!";
@@ -18,6 +20,7 @@ export default function Home() {
   const [testChat, setTestChat] = useState<Message[]>([
     { role: 'assistant', content: DEFAULT_INITIAL_MESSAGE }
   ]);
+  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
 
   const handleApplyChanges = () => {
     // Reset chat with new initial message
@@ -28,8 +31,7 @@ export default function Home() {
 
   return (
     <main className="container mx-auto p-4 h-screen">
-      <div className="grid grid-cols-2 gap-6 h-[calc(100vh-2rem)]">
-        {/* Left Column */}
+      <div className="grid grid-cols-3 gap-6 h-[calc(100vh-2rem)]">
         <div className="flex flex-col space-y-6 h-full">
           {/* SystemPromptEditor*/}
           <div className="h-2/3">
@@ -46,13 +48,16 @@ export default function Home() {
             <HelperChat />
           </div>
         </div>
-        {/* Right Column */}
         <div className="h-full">
           <TestChat
             systemPrompt={systemPrompt + DEFAULT_INTERACTION_PROMPT}
             messages={testChat}
             setMessages={setTestChat}
+            onSelectMessage={setSelectedMessage}
           />
+        </div>
+        <div className="h-full">
+          <ChatReview message={selectedMessage} />
         </div>
       </div>
     </main>
