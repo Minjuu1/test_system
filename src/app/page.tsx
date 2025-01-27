@@ -20,13 +20,23 @@ export default function Home() {
   const [testChat, setTestChat] = useState<Message[]>([
     { role: 'assistant', content: DEFAULT_INITIAL_MESSAGE }
   ]);
-  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
+  const [selectedMessages, setSelectedMessages] = useState<Message[]>([]);
 
   const handleApplyChanges = () => {
     // Reset chat with new initial message
     setTestChat([
       { role: 'assistant', content: initialMessage }
     ]);
+  };
+
+  const handleSelectMessage = (message: Message) => {
+    setSelectedMessages(prev => {
+      if (prev.includes(message)) {
+        return prev.filter(m => m !== message);
+      } else {
+        return [...prev, message];
+      }
+    });
   };
 
   return (
@@ -53,11 +63,11 @@ export default function Home() {
             systemPrompt={systemPrompt + DEFAULT_INTERACTION_PROMPT}
             messages={testChat}
             setMessages={setTestChat}
-            onSelectMessage={setSelectedMessage}
+            onSelectMessage={handleSelectMessage}
           />
         </div>
         <div className="h-full">
-          <ChatReview message={selectedMessage} />
+          <ChatReview messages={selectedMessages} />
         </div>
       </div>
     </main>
